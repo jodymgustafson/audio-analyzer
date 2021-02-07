@@ -1,0 +1,26 @@
+{
+  "name": "audio-analyzer",
+  "version": "1.0.0",
+  "description": "WebAudio audio analyzer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jodymgustafson/audio-analyzer.git"
+  },
+  "author": "JM Gustafson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jodymgustafson/audio-analyzer/issues"
+  },
+  "homepage": "https://github.com/jodymgustafson/audio-analyzer#readme",
+  "dependencies": {
+    "events": "^3.2.0",
+    "pitchfinder": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/events": "^3.0.0"
+  }
+}
