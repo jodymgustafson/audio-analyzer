@@ -16,7 +16,7 @@ const defaultConfig: AudioAnalyzerListenerConfig = {
  * to listeners
  */
 export class AudioAnalyzerListener extends EventEmitter {
-    private config: AudioAnalyzerListenerConfig
+    private config: AudioAnalyzerListenerConfig;
     private intervalId = 0;
     private floatTTD?: Float32Array;
     private byteTTD?: Uint8Array;
@@ -32,7 +32,7 @@ export class AudioAnalyzerListener extends EventEmitter {
     get isRunning(): boolean {
         return this.intervalId > 0;
     }
-    
+
     addFloatTimeDomainDataListener(cb: (data: Float32Array) => any): void {
         this.on("float-time-domain", cb);
     }
@@ -68,14 +68,14 @@ export class AudioAnalyzerListener extends EventEmitter {
     start(): void {
         if (this.intervalId === 0) {
             if (!this.analyzer.isConnected) {
-                throw new Error("You must call AudioAnalyzer.connect() before starting")
+                throw new Error("You must call AudioAnalyzer.connect() before starting");
             }
 
             this.intervalId = setInterval(() => this.handleAudioEvent(), this.config.audioPollInterval);
         }
     }
 
-    stop() {
+    stop(): void {
         if (this.intervalId) {
             clearInterval(this.intervalId);
             this.intervalId = 0;
@@ -87,7 +87,7 @@ export class AudioAnalyzerListener extends EventEmitter {
             this.floatTTD = this.analyzer.getFloatTimeDomainData(this.floatTTD);
             this.emit("float-time-domain", checkGain(this.floatTTD, this.config.gainThreshold!) ? this.floatTTD : undefined);
         }
-        
+
         if (this.listenerCount("byte-time-domain") > 0) {
             this.byteTTD = this.analyzer.getByteTimeDomainData(this.byteTTD);
             this.emit("byte-time-domain", checkGain(this.byteTTD, this.config.gainThreshold! * 255) ? this.byteTTD : undefined);
@@ -97,7 +97,7 @@ export class AudioAnalyzerListener extends EventEmitter {
             this.floatTTD = this.analyzer.getFloatFrequencyData(this.floatFreq);
             this.emit("float-frequency", this.floatFreq);
         }
-        
+
         if (this.listenerCount("byte-frequency") > 0) {
             this.byteFreq = this.analyzer.getByteTimeDomainData(this.byteFreq);
             this.emit("byte-frequency", this.byteFreq);

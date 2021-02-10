@@ -3,4 +3,6 @@ test
 .vscode
 tsconfig.json
 **/*.js.map
+src/**/*.ts
+!src/**/*.d.ts
 index.ts

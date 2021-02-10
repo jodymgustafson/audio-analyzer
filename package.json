@@ -4,7 +4,8 @@
   "description": "WebAudio audio analyzer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "package": "npm pack",
+    "lint": "eslint **/*.ts"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,10 @@
     "pitchfinder": "^2.3.1"
   },
   "devDependencies": {
-    "@types/events": "^3.0.0"
+    "@types/events": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "eslint": "^7.19.0",
+    "typescript": "^4.1.4"
   }
 }

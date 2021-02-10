@@ -15,7 +15,7 @@ export class AudioAnalyzer {
     constructor(config?: AudioAnalyzerConfig) {
         this.context = config?.context || new AudioContext();
         this.analyser = this.context.createAnalyser();
-        
+
         if (config?.fftSize) {
             this.analyser.fftSize = config.fftSize;
         }
@@ -33,7 +33,7 @@ export class AudioAnalyzer {
         }
     }
 
-    disconnect() {
+    disconnect(): void {
         if (this.audioStream) {
             this.audioStream.disconnect(this.analyser);
             this.audioStream = undefined;
@@ -81,6 +81,6 @@ async function getUserMedia(): Promise<MediaStream> {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         return await navigator.mediaDevices.getUserMedia({ audio: true });
     }
-    
+
     throw new Error('Audio recording not supported by your web browser');
 }

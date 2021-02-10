@@ -1,0 +1,50 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        // https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules
+        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/src/configs/recommended.json
+        
+        "comma-spacing": 1,
+        "no-multi-spaces": 1,
+        "block-spacing": 1,
+        "object-curly-spacing": [1, "always"],
+        "space-before-blocks": 1,
+        "no-multiple-empty-lines": [1, {"max":1}],
+        "no-mixed-spaces-and-tabs": 1,
+        "no-trailing-spaces": 1,
+        "prefer-const": "warn",
+        "camelcase": "off",
+        //"@typescript-eslint/naming-convention": ["warn", { "selector": "variable", "format": ["camelCase"] }, { "selector": "class", "format": ["camelCase"] }], 
+        "@typescript-eslint/adjacent-overload-signatures": "warn",
+        "@typescript-eslint/ban-types": ["warn"],
+        "@typescript-eslint/consistent-type-assertions": "warn",
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/member-delimiter-style": "warn",
+        "@typescript-eslint/no-array-constructor": "warn", "no-array-constructor": "off",
+        "@typescript-eslint/no-empty-function": "warn", "no-empty-function": "off",
+        "@typescript-eslint/no-empty-interface": "warn",
+        "@typescript-eslint/no-extra-semi": "warn", "no-extra-semi": "off",
+        "@typescript-eslint/no-misused-new": "warn",
+        //"@typescript-eslint/no-non-null-assertion": "warn",
+        "@typescript-eslint/no-this-alias": "warn",
+        "@typescript-eslint/no-unused-vars": "warn", "no-unused-vars": "off",
+        "@typescript-eslint/semi": "warn", "semi": "off",
+        "@typescript-eslint/type-annotation-spacing": "warn"
+    }
+}

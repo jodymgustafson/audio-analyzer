@@ -18,7 +18,7 @@ export type NoteEvent = {
  * Analyzes audio data and converts it into musical note info for tuning
  */
 export class AudioTuner extends EventEmitter {
-    private pitchFinder = PitchFinder.AMDF({sampleRate: this.listener.analyzer.context.sampleRate });
+    private pitchFinder = PitchFinder.AMDF({ sampleRate: this.listener.analyzer.context.sampleRate });
 
     constructor(private listener: AudioAnalyzerListener) {
         super();
