@@ -6,3 +6,5 @@ tsconfig.json
 src/**/*.ts
 !src/**/*.d.ts
 index.ts
+.eslintrc
+*.tgz
