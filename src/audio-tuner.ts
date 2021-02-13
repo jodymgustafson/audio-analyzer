@@ -25,7 +25,7 @@ export type TunerEvent = {
 export class AudioTuner extends EventEmitter {
     private pitchFinder = PitchFinder.AMDF({ sampleRate: this.listener.analyzer.context.sampleRate });
 
-    constructor(private listener: AudioAnalyzerListener) {
+    constructor(readonly listener: AudioAnalyzerListener) {
         super();
         listener.addFloatTimeDomainDataListener(data => this.handleEvent(data));
     }
@@ -41,11 +41,11 @@ export class AudioTuner extends EventEmitter {
     }
 
     addTunerListener(cb: (ev: TunerEvent) => any): void {
-        this.on("note", cb);
+        this.on("tuner", cb);
     }
 
     removeTunerListener(cb: (ev: TunerEvent) => any): void {
-        this.off("note", cb);
+        this.off("tuner", cb);
     }
 
     private handleEvent(data: Float32Array): void {

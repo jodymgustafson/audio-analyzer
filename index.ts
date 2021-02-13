@@ -1,7 +1,7 @@
 import { AudioAnalyzer, AudioAnalyzerConfig } from "./src/audio-analyzer";
 import { AudioAnalyzerListener, AudioAnalyzerListenerConfig } from "./src/audio-analyzer-listener";
 import { AudioTuner, TunerEvent } from "./src/audio-tuner";
-import { getAudioTuner } from "./src/get-audio-tuner";
+import { getAudioTuner, getAudioTunerSync } from "./src/get-audio-tuner";
 
 export {
     AudioAnalyzer,
@@ -10,12 +10,14 @@ export {
     AudioAnalyzerListenerConfig,
     AudioTuner,
     TunerEvent,
-    getAudioTuner
+    getAudioTuner,
+    getAudioTunerSync
 };
 
 export default {
     AudioAnalyzer,
     AudioAnalyzerListener,
     AudioTuner,
-    getAudioTuner
+    getAudioTuner,
+    getAudioTunerSync
 };

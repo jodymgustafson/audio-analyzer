@@ -1,6 +1,6 @@
 {
   "name": "audio-analyzer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "WebAudio audio analyzer",
   "main": "index.js",
   "scripts": {
