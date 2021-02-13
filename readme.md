@@ -55,3 +55,12 @@ Run `tsc` to compile.
 
 ### Package
 Run `npm pack` or `npm run package` from the command line.
+
+### Deploy
+- In GitHub go to Releases
+- Draft a new release
+- Set tag to version number (e.g. v1.0.1)
+- Upload the tgz file created by pack
+
+### Install
+Install using `npm i https://github.com/jodymgustafson/audio-analyzer/releases/download/v1.0.1/audio-analyzer-1.0.1.tgz`
