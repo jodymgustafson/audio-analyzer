@@ -1,14 +1,16 @@
 import { EventEmitter } from 'events';
 import { AudioAnalyzer } from './audio-analyzer';
 
+const DEFAULT_INTERVAL = 50;
+
 export type AudioAnalyzerListenerConfig = {
     gainThreshold?: number;
-    audioPollInterval?: number;
+    pollInterval?: number;
 };
 
 const defaultConfig: AudioAnalyzerListenerConfig = {
     gainThreshold: 0.01,
-    audioPollInterval: 50
+    pollInterval: DEFAULT_INTERVAL
 };
 
 /**
@@ -65,13 +67,13 @@ export class AudioAnalyzerListener extends EventEmitter {
         this.off("byte-frequency", cb);
     }
 
-    start(): void {
+    start(pollInterval?: number): void {
         if (this.intervalId === 0) {
             if (!this.analyzer.isConnected) {
                 throw new Error("You must call AudioAnalyzer.connect() before starting");
             }
 
-            this.intervalId = setInterval(() => this.handleAudioEvent(), this.config.audioPollInterval);
+            this.intervalId = setInterval(() => this.handleAudioEvent(), (pollInterval || this.config.pollInterval));
         }
     }
 

@@ -1,6 +1,6 @@
 import { AudioAnalyzer, AudioAnalyzerConfig } from "./src/audio-analyzer";
 import { AudioAnalyzerListener, AudioAnalyzerListenerConfig } from "./src/audio-analyzer-listener";
-import { AudioTuner, NoteEvent } from "./src/audio-tuner";
+import { AudioTuner, TunerEvent } from "./src/audio-tuner";
 
 export {
     AudioAnalyzer,
@@ -8,7 +8,7 @@ export {
     AudioAnalyzerListener,
     AudioAnalyzerListenerConfig,
     AudioTuner,
-    NoteEvent
+    TunerEvent
 };
 
 export default {

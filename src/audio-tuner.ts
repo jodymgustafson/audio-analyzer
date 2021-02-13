@@ -6,11 +6,16 @@ const NOTES = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A�
 const MIDDLE_A = 440;
 const SEMITONE = 69;
 
-export type NoteEvent = {
+export type TunerEvent = {
+    /** Name of the musical note */
+    note: string;
+    /** Number of the note where 0=A1 */
     noteNumber: number;
-    name: string;
-    cents: number;
+    /** Octave of the note */
     octave: number;
+    /** Number of cents off from perfect for the note the frequency is */
+    cents: number;
+    /** Frequency of the audio data */
     frequency: number;
 };
 
@@ -25,8 +30,8 @@ export class AudioTuner extends EventEmitter {
         listener.addFloatTimeDomainDataListener(data => this.handleEvent(data));
     }
 
-    start(): void {
-        this.listener.start();
+    start(pollInterval?: number): void {
+        this.listener.start(pollInterval);
         //console.log("started");
     }
 
@@ -35,28 +40,37 @@ export class AudioTuner extends EventEmitter {
         //console.log("stopped");
     }
 
+    addTunerListener(cb: (ev: TunerEvent) => any): void {
+        this.on("note", cb);
+    }
+
+    removeTunerListener(cb: (ev: TunerEvent) => any): void {
+        this.off("note", cb);
+    }
+
     private handleEvent(data: Float32Array): void {
         if (data) {
             const frequency = this.pitchFinder(data);
-            if (frequency && this.listenerCount('note')) {
+
+            if (frequency && this.listenerCount("tuner")) {
                 const note = getNoteNumber(frequency);
-                this.emit('note', {
+                this.emit("tuner", {
                     noteNumber: note,
-                    name: getNoteName(note),
+                    note: getNoteName(note),
                     cents: getCents(frequency, note),
                     octave: getOctave(note),
                     frequency
-                } as NoteEvent);
+                } as TunerEvent);
             }
         }
         else {
-            this.emit('note', {
-                name: "",
+            this.emit("tuner", {
+                note: "",
                 noteNumber: 0,
                 cents: 0,
                 octave: 0,
                 frequency: 0
-            } as NoteEvent);
+            } as TunerEvent);
         }
     }
 }
